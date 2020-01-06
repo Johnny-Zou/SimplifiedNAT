@@ -7,12 +7,10 @@ Your program will read a list of NAT entries and a list of flows, and output the
 
 ## Assumptions
 <ul>
-	<li>When a flow matches multiple entries in the NAT due to wildcards, the output will be based on the following order:
-	<ol>
-		<li>return exact NAT match for IP and port</li>
-		<li>return exact match for IP but wildcard for port</li>
-		<li>return exact match for port but wildcard for IP</li>
-	</ol>
+	<li>When a flow matches multiple entries in the NAT due to wildcards, the output will be based on the following order:<br/>
+	&nbsp&nbsp&nbsp  1) return exact NAT match for IP and port<br/>
+	&nbsp&nbsp&nbsp  2) return exact match for IP but wildcard for port<br/>
+	&nbsp&nbsp&nbsp  3) return exact match for port but wildcard for IP<br/>
 	Example:<br/>
 	NAT<br/>
 	&nbsp&nbsp&nbsp  1:1,2:1<br/>
@@ -20,7 +18,7 @@ Your program will read a list of NAT entries and a list of flows, and output the
 	&nbsp&nbsp&nbsp  *:1,2:3<br/>
 	Then incoming flows to "1:1" will translate to "2:1" even though 1:1 could also technically match 1:* and *:1. If line 1 was removed in NAT then incoming flows would translate to "2:2" instead and so on.</li>
 	<li>All inputs are valid and formatted correctly (ie NAT file can only contain 1 comma per line, no white space in input files, etc)</li>
-<ul>
+</ul>
 
 ## Tests
 Run the ./run_tests.sh bash script to run tests
